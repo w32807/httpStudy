@@ -1,0 +1,13 @@
+1. URI(Uniform Resource Identifier)
+    [내용]
+        1) URI - 로케이터(locator), 이름(name) 또는 둘 다 추가로 분류 될 수 있다.
+            >> URI 안에 URL, URN이 있다고 생각하면 됨
+        2) URL (Uniform Resource Locator) - 리소스의 위치 (특정 리소스의 위치는 여기야!)
+        3) URN (Uniform Resource Name) - 리소스의 이름 (특정 리소스의 이름은 이거야!)
+        4) URI 뜻
+            a) Uniform : 리소스를 식별하는 통일된 방식
+            b) Resource : 자원, URI로 식별할 수 있는 모든 것
+            C) Identifier : 다른 항목과 구분하는데 필요한 정보(자원을 구분할 수 있는 값)
+        5) URI 문법
+            a) 프로토콜 (https) + 호스트명 (www.google.com) + 포트번호(443) + 리소스경로(/search) + 쿼리파라미터
+            b) 일반적으로 포트번호를 생략하면 http는 80, https는 443
