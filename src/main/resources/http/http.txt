@@ -1,0 +1,61 @@
+1. HTTP (HyperText Transfer Protocol)
+    [내용]
+        1) HTTP 메세지에 모든 것을 전송함
+            HTML, TEXT, IMAGE, 음성, 영상, 파일, JSON, XML 등등
+        2) 현재는 HTTP/3까지 나왔지만, 가장 많이 쓰는건 HTTP/1.1이다.
+            RFC2068(1997) -> RFC2616(1997) -> RFC7230~7235(1997)
+    [특징]
+        1) 무상태 프로토콜 (stateless)를 지향함
+            a) 필요한 데이터를 그때 그때 다 전송한다
+            b) 서버의 확장성이 좋음 (서버가 바뀌어도 클라이언트의 요청에서 필요한 데이터를 모두 전송 받기 때문에!)
+            c) 일부 상태유지가 필요한 데이터들이 있다. 그래서 브라우저의 쿠키, 서버의 세션 등이 필요함
+
+        2) 비연결성 (Connectionless)
+            a) http 요청 -> http 응답의 1번 싸이클이 끝나면 연결을 끊는다.
+            b) 서버는 클라이언트와 연결을 유지하지 않으므로 연결을 위한 최소한의 자원만 유지한다.
+            c) 다시 요청이 오면 연결을 하고 완료되면 끊는다.
+
+            ** 비연결성 (Connectionless)의 한계
+            a) 매번 TCP/IP 연결을 새로 맺어야 함 (3 way handshake을 수행하는 시간이 추가되므로 속도 저하)
+            b) 웹브라우저로 사이트를 요청하면 HTML 뿐 아니라 JS, CSS 등 1번 접속에 여러 번의 http 요청이 일어남
+            c) 지금은 HTTP 지속연결 (Persistent Connection)로 문제 해결 (Keep-alive, Connection re-use라는 표현도 사용함)
+
+2. HTTP 메세지
+    [내용]
+        1) HTTP 메세지 구조
+            - start line (Request line)
+                ** http 요청일 때 > HTTP 메소드, URL, HTTP 버전 포함
+                ** http 응답일 때 > HTTP 버전, 응답 상태 코드 포함
+            - header
+            - header와 body를 구분하는 공백 라인 1줄 (CRLF - 새로운 공백 줄이라는 뜻)
+            - message body
+
+        2) HTTP 요청 메세지 (Http Request)
+            a) start line (Request line)
+                request-line = method + 스페이스공백 + request target + 스페이스공백 + HTTP-version + 엔터
+            b) HTTP Method
+                종류 : GET, POST, PUT, DELETE 등..
+            c) request target
+                절대경로로 지정함
+            d) HTTP-version
+                HTTP/1.1, H/2 등등..
+
+        3) HTTP 응답 메세지 (Http Response)
+            a) start line (Request line)
+                request-line = HTTP-version + 스페이스공백 + status-code + 스페이스공백 + reason-phrase + 엔터
+            b) HTTP-version
+                HTTP/1.1, H/2 등등..
+            c) status-code (요청의 성공, 실패를 나타냄)
+                (200 OK에서 200을 뜻함)
+            d) reason-phrase
+                상태코드를 사람이 이해할 수 있는 짧은 문구
+                (200 OK에서 OK를 뜻함)
+
+        4) HTTP header
+            a) field-name은 대소문자 구분 X
+            b) HTTP 전송에 필요한 모든 부가정보를 포함
+                메세지 바디의 내용, 바디의 크기, 압축여부, 인증, 요청 클라이언트 정보, 서버 APP 정보, 캐시관리정보 등등...
+
+        4) HTTP Body
+            a) 실제 전송할 데이터
+            b) HTML, 이미지, 영상 등 모든 바이너리로 표현할 수 있는 데이터를 전송 가능
