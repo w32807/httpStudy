@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<form th:object="${dto}" th:action="@{/members/create}" method="post">
+	이름 : <input th:field="*{name}"><br>
+	나이 : <input th:field="*{age}">
+	<button type="submit">등록</button>
+</form>
+
+<script th:inline="javascript">
+</script>

@@ -28,7 +28,6 @@ repositories {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-quartz'
-	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
@@ -42,11 +41,9 @@ dependencies {
 
 	// Thymeleaf
 	implementation group: 'org.thymeleaf.extras', name: 'thymeleaf-extras-java8time'
-	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5'
 
 	// Test
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	testImplementation 'org.springframework.security:spring-security-test'
 	testImplementation 'org.testcontainers:testcontainers:1.16.3'
 
 	// Querydsl
@@ -56,11 +53,9 @@ dependencies {
 	// Utils
 	implementation 'com.googlecode.json-simple:json-simple:1.1.1'
 	implementation 'com.google.guava:guava:30.1.1-jre'
-	compileOnly 'org.projectlombok:lombok'
+	implementation 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
-
-	// thumbnail
-	implementation group: 'net.coobird', name: 'thumbnailator', version: '0.4.16'
+	implementation 'com.google.code.gson:gson:2.8.5'
 
 }
 

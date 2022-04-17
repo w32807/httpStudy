@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<form th:object="${member}" th:action="@{/members/{id}/delete(id=*{id})}" method="post">
+		이름 : <input th:value="*{name}"><br>
+		나이 : <input th:value="*{age}"><br><br>
+		<a th:href="@{/members}">목록</a>
+		<a th:href="@{/members/{id}/edit(id=*{id})}">수정</a>
+		<button type="submit">삭제</button>
+	</form>
+<script th:inline="javascript">
+</script>

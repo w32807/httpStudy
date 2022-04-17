@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<form th:object="${member}" th:action="@{/members/{id}/edit(id=${member.id})}" method="post">
+	이름 : <input th:field="*{name}"><br>
+	나이 : <input th:field="*{age}">
+	<button type="submit">수정</button>
+</form>
+
+<script th:inline="javascript">
+</script>

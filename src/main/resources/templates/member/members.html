@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<div th:each="member : ${members}">
+	이름 : <input th:value="${member.name}"><br>
+	나이 : <input th:value="${member.age}"><br>
+	<a th:href="@{/members/{id}(id=${member.id})}">조회</a>
+</div>
+<br><br>
+<a th:href="@{/members/create}">등록</a>
+<script th:inline="javascript">
+</script>

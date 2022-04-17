@@ -1,6 +1,4 @@
 # spring 2.4 버전부터 profiles 선언 방식이 변경됨
-# spring.prifiles.active임을 주의하자!
-# 그리고 구분자 및 spring.config.activate.on-profile로 설정을 구분할 수 있다.
 spring:
   datasource:
     driver-class-name: org.h2.Driver
@@ -10,7 +8,7 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: create
     properties:
       hibernate:
         format_sql: true
