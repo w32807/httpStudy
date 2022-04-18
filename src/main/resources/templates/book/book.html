@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<div>
+	제목 : <input th:value="${book.title}"><br>
+	가격 : <input th:value="${book.price}"><br><br>
+	<a th:href="@{/books}">목록</a>
+	<a th:href="@{/books/{id}/edit(id=*{id})}">수정</a>
+	<button type="button" th:onclick="'deleteBook(' + ${book.id} + ')'">삭제</button>
+</div>
+
+<!--/* 타임리프에서는 닫기 태그를 줄이면 JS import가 안되므로 주의 */-->
+<script th:src="@{../js/jquery-3.3.1.min.js}"></script>
+<script th:src="@{../js/common.js}"></script>
+<script th:inline="javascript">
+	function deleteBook(id){
+		/*
+			Ajax로 데이터 전송하는 경우
+
+			1. Json.Stringify 사용할 때는 컨트롤러에서 @RequestBody & Map 혹은 DTO로 받는다.
+				contentType: "application/json; charset=utf-8"을 줘야 한다.
+
+			2. 단일 값 혹은 Primitive 타입으로 전달할 때는 그냥 객체로 넘기고 @RequestParam으로 받는다.
+				contentType: "application/x-www-form-urlencoded; charset=utf-8"을 줘야 한다.
+		*/
+		$.ajax({
+			url:'/books',
+			method: 'DELETE',
+			data: {id : id},
+			contentType: "application/x-www-form-urlencoded; charset=utf-8",
+			success: function (response, status) {
+				location.href = '/books'
+			},
+			error: function (response, status) {
+			}
+		});
+	}
+</script>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+	<div>
+		<form>
+			이름 : <input th:field="${book.title}"><br>
+			나이 : <input th:field="${book.price}">
+			<button type="button" th:onclick="'modify(' + ${book.id} + ')'">수정</button>
+		</form>
+	</div>
+</body>r
+<!--/* 타임리프에서는 닫기 태그를 줄이면 JS import가 안되므로 주의 */-->
+<script th:src="@{../../js/jquery-3.3.1.min.js}"></script>
+<script th:src="@{../../js/common.js}"></script>
+<script th:inline="javascript">
+	function modify(id){
+		// 위의 form을 처리하여 ajax로 등록한다.
+		// json 데이터를 넘겨서 restController에서 처리하도록 한다.
+		var serialized = $('form').serializeObject()
+
+		$.ajax({
+			url:'/books',
+			method: 'PATCH',
+			data: JSON.stringify(serialized),
+			contentType: "application/json; charset=utf-8",
+			success: function (response, status) {
+				location.href = '/books/' + response
+			},
+			error: function (response, status) {
+			}
+		});
+	}
+</script>

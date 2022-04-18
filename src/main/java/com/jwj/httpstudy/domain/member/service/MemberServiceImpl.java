@@ -25,12 +25,9 @@ public class MemberServiceImpl implements MemberService{
     
     @PostConstruct
     public void init(){
-        log.info("초기화 메소드 시작");
         String filePath = "initData/memberInitData.json";
         List<MemberRequestDto> list = readJSONList(filePath, MemberRequestDto.class);
-        for (MemberRequestDto dto : list){
-            memberRepository.save(dto.toEntity());
-        }
+        list.stream().forEach(dto -> memberRepository.save(dto.toEntity()));
     }
 
     @Override
