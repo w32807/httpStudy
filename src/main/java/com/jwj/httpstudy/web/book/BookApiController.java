@@ -15,8 +15,6 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class BookApiController {
     // 화면 이동이 필요한 경우는 일반 Controller에서 작성한다.
-    // todo 각 화면단에서 Ajax and json으로 데이터 전송
-    // todo 그리고 formData 객체 공부하기 (꼭 body에 붙여서 전송해야 하는듯)
     // todo 빠르게 끝낸 후, HTTP 상태코드 듣고, ExceptionHandler 다시 공부해서 적용하자
     private final BookService bookService;
     private final BookRepository bookRepository;
