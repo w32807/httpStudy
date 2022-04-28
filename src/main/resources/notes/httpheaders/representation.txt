@@ -144,3 +144,22 @@
     2) 브라우저 캐시
         a) 개발자 모드에서 보면 from disk cache는 램으로부터 캐시된 데이터를 조회한다.
         b) 개발자 모드에서 보면 from memory cache1는 CPU의 캐시메모리로부터 캐시된 데이터를 조회한다.
+
+14. 웹 스토리지
+    1) 브라우저마다 localStorage API HTML5에서 지원한다.
+        if(typeof(Storage) !== "undefined") {} 로 유효성 체크가 가능하다.
+
+    2) 웹 스토리지는 sessionStorage, localStorage로 나뉜다.
+        >> sessionStorage는 브라우저의 세션, localStorage는 진짜 로컬 스토리지 (재부팅해도 살아있음)
+
+    3) 웹 스토리지는 key, value로 구성되며 모든 값은 문자열로 저장된다 (JSON 문자열도 가능!)
+
+    4) 선언 - window.localStorage.clear() 같이 선언해서 사용함
+
+    5) 지원 메소드
+        a) length - 스토리지에 저장된 데이터의 길이
+        b) key(int) - 해당 인덱스 위치에 있는 데이터(문자열)을 반환
+        c) getItem(key) - 해당 키 값에 해당하는 데이터(문자열)을 반환
+        d) setItem(key, value) - 해당 Key 값에 대한 데이터를 저장
+        e) removeItem(key) - 해당 Key 값에 해당하는 데이터를 삭제
+        f) clear() -  스토리지에 저장된 모든 데이터를 삭제
